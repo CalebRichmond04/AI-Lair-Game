@@ -74,25 +74,42 @@ def true_bot_answer(question):
     return answer
     
 
-def liar_bot_answer(question):
+def liar_bot_answer(question, difficulty):
 #Liar bot main logic checks if the bot gave a facutal answer by passing its answer to the evaluator bot
 #if answer was correct it regenerates a new answer until it gets one that is evaluated as incorrect or the max attempts
-    liar_messages.append({"role": "user", "content": question})
+
+    ai_content = f"""
+        You are the Liar Bot.
+        The current difficulty is: {difficulty}
+
+        Difficulty rules:
+        - Easy: make the lie more obvious.
+        - Medium: make the lie believable but still detectable.
+        - Hard: make the lie extremely subtle and difficult to catch.
+
+        Answer the following question with a factually incorrect but believable answer:
+        {question}
+
+        Continue to follow the previous rules.
+    """
+
+    liar_messages.append({"role": "user", "content": ai_content})
 
     print("\nThinking...")
 
-    for i in range(3):
+    for i in range(5):
         answer = ask_llm(liar_messages)
 
         evaluation = evaluate_liar_answer(question, answer)
 
-    #if incorect in eval should fix errors with answer
         if "incorrect" in evaluation:
             liar_messages.append({"role": "assistant", "content": answer})
             return answer
 
         liar_messages.append({
-            "role": "user", "content": "That answer was evaluated as correct. Try again and give a believable but factually incorrect answer."})
+            "role": "user",
+            "content": "That answer was evaluated as correct. Try again and give a believable but factually incorrect answer."
+        })
 
     liar_messages.append({"role": "assistant", "content": answer})
     return answer

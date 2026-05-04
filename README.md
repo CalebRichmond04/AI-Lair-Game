@@ -2,7 +2,7 @@ REQUIRED INSTALLS
 
 pip install -r requirements.txt
 
-(key.env file is required - text inside file looks like [OPENAI_API_KEY="Insert API Key here"])
+(key.env file is required - text inside file looks like [OPENAI_API_KEY=Insert API Key here])
 
 
 HOW TO PLAY LAIR GAME
@@ -15,15 +15,23 @@ HOW TO PLAY LAIR GAME
 
     Bot gives you the answer to the question
 
-    Determin if the answer if true or false
+    Determin if the answer was given by the Truthful or Lying bot
         NOTE
-        - ONLY "true" or "false" works for this interaction
+        - ONLY "truth" or "lie" works for this interaction
 
     Context bot will explain the answer and or tell the correct answer if the bots answer was false
 
     Player is scored based on answer
 
     Repeat previous or type 'exit' to close the game
+
+
+    NOTES  
+        Difficulty System
+            - Difficulty is scaled on the diffrence in correct and incorrect guesses
+            - Base Difficulty set to Medium
+        Streak Multiplier
+            - Every interval of 4 will multiply score by 2
 
 
 HOW TO PLAY EXAM GAME (NOT IMPLMENTED YET)
