@@ -1,4 +1,6 @@
-
+#this is the api client code
+#it connects my code with the openai api client it uses the key.env to pass the api key
+#im using my own api key but any valid key will work
 import os
 from openai import OpenAI
 from dotenv import load_dotenv

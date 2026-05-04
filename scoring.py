@@ -6,9 +6,10 @@ class ScoreTracker:
         self.streak = 0
         self.streak_highest = 0
 
+#getters and setters for the game
+
     def score_up(self):
         self.score += 1
-
 
     def score_down(self):
         self.score -= 1
@@ -31,6 +32,7 @@ class ScoreTracker:
     def get_incorrect(self):
         return self.incorrect
     
+    #determins the % accuracy by dividing correct guesses by total guesses
     def get_accuracy(self):
         if self.correct + self.incorrect == 0:
             return 0
@@ -45,15 +47,18 @@ class ScoreTracker:
     def streak_down(self):
         self.streak = 0
 
-
+    #multiplies the score by given factor passed from the caller
     def score_multiply(self, mult):
         self.score *= mult
 
+    #determines the highest streak achieved and stores it
     def get_streak_highest(self):
         if self.streak > self.streak_highest:
             self.streak_highest = self.streak  
         return self.streak_highest
     
+    #dynamically sets the difficulty based on the users performance
+    #note this doesnt always work as expected due to nature of the ai and the question given to it
     def difficulty(self):
         if (self.correct - self.incorrect) < -4:
             print("\nDifficulty set to Easy.")
