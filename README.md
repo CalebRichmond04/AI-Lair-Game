@@ -4,6 +4,7 @@ pip install -r requirements.txt
 
 (key.env file is required - text inside file looks like [OPENAI_API_KEY=Insert API Key here])
 
+run the main.py to start
 
 HOW TO PLAY LAIR GAME
 
